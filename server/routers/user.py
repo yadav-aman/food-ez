@@ -29,6 +29,11 @@ async def create_user(request: user.User,db: Session = Depends(get_db)):
     except:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
+
+@router.get('/me', response_model=user.Show_User)
+async def show_me(current_user: user = Depends(oauth2.get_current_user)):
+    return current_user
+
 @router.get('/{username}', response_model=user.Show_User)
 async def show_user(username: str, db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_user)):
     user = db.query(models.User).filter(models.User.username == username).first()
