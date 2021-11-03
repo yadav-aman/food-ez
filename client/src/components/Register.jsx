@@ -4,6 +4,7 @@ import { UserContext } from "../context/UserContext";
 import ErrorMessage from "./ErrorMessage";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
@@ -14,10 +15,10 @@ const Register = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email, hashed_password: password }),
+      body: JSON.stringify({ name: name, username: email, password: password }),
     };
 
-    const response = await fetch("/api/users", requestOptions);
+    const response = await fetch("http://localhost:8000/user/", requestOptions);
     const data = await response.json();
 
     if (!response.ok) {
@@ -42,6 +43,19 @@ const Register = () => {
     <div className="column">
       <form className="box" onSubmit={handleSubmit}>
         <h1 className="title has-text-centered">Register</h1>
+        <div className="field">
+          <label className="label">Name</label>
+          <div className="control">
+            <input
+              type="text"
+              placeholder="Enter name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="input"
+              required
+            />
+          </div>
+        </div>
         <div className="field">
           <label className="label">Email Address</label>
           <div className="control">
