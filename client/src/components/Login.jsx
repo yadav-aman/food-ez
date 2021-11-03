@@ -18,7 +18,10 @@ const Login = () => {
       ),
     };
 
-    const response = await fetch("/api/token", requestOptions);
+    const response = await fetch(
+      "http://localhost:8000/auth/login",
+      requestOptions
+    );
     const data = await response.json();
 
     if (!response.ok) {

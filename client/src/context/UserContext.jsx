@@ -15,7 +15,7 @@ export const UserProvider = (props) => {
         },
       };
 
-      const response = await fetch("/api/users/me", requestOptions);
+      const response = await fetch("/users", requestOptions);
 
       if (!response.ok) {
         setToken(null);

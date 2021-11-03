@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 @router.post('/')
-def create_user(request: user.User,db: Session = Depends(get_db)):
+async def create_user(request: user.User,db: Session = Depends(get_db)):
     old_user = db.query(models.User).filter(models.User.username == request.username).first()
     if old_user:
         raise HTTPException(status_code=status.HTTP_405_METHOD_NOT_ALLOWED, detail=f"User: {request.username} already exists")
@@ -30,7 +30,7 @@ def create_user(request: user.User,db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
 @router.get('/{username}', response_model=user.Show_User)
-def show_user(username: str, db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_user)):
+async def show_user(username: str, db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_user)):
     user = db.query(models.User).filter(models.User.username == username).first()
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
