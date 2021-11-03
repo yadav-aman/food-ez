@@ -33,13 +33,13 @@ const App = () => {
 
   return (
     <>
-      <Header title={message} />
+       <Header title={message} />
       <div className="columns">
         <div className="column"></div>
         <div className="column m-5 is-two-thirds">
           {!token ? (
             <div className="columns">
-              <Register /> <Login />
+              <Register /> 
             </div>
           ) : (
             <Table />
