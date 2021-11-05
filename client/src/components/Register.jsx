@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 
 import { UserContext } from "../context/UserContext";
 import ErrorMessage from "./ErrorMessage";
+import Login from "./Login";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ const Register = () => {
   const [confirmationPassword, setConfirmationPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [, setToken] = useContext(UserContext);
+  const [toggle,setToggle] = useState("signin") 
 
   const submitRegistration = async () => {
     const requestOptions = {
@@ -39,9 +41,13 @@ const Register = () => {
     }
   };
 
-  return (
+  const signup=()=>{
+    setToggle("login")
+  }
 
-<div className="login">
+  return (
+<>
+    {toggle===("signin")?<div className="login">
     <div className="container">
         <h1>Welcome to Food-ez<br />Register here:</h1>
     
@@ -55,32 +61,15 @@ const Register = () => {
 
           <button className="submit_2 ml-3" type="submit">Register</button>
           </form>
+          <h2 className="ml-1 has-text-black">Already Registered?</h2>
+          <button className="submit_2 sign mt-3" onClick={signup}>Login</button>
         </div>
     
       </div>
-      </div>
+       </div>:(toggle===("login")?<Login/>:null)}
+       </>
       
   );
 };
 
 export default Register;
-
-
-{/* <div className="login">
-      <div className="container">
-        <h1>Login to access to<br />your account</h1>
-    
-        <div className="login-form">
-          <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-            <input type="password" placeholder="Confirm Password" value={confirmationPassword} onChange={(e) => setConfirmationPassword(e.target.value)} required/>
-            <ErrorMessage message={errorMessage} /><br/>
-            
-          <button className="submit_2 ml-3" type="submit">Register</button>
-          </form>
-        </div>
-    
-      </div>
-      </div> */}
