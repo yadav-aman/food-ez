@@ -2,12 +2,14 @@ import React, { useState, useContext } from "react";
 
 import ErrorMessage from "./ErrorMessage";
 import { UserContext } from "../context/UserContext";
+import Register from "./Register";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [, setToken] = useContext(UserContext);
+  const [toggle,setToggle]=useState("login");
 
   const submitLogin = async () => {
     const requestOptions = {
@@ -36,44 +38,41 @@ const Login = () => {
     submitLogin();
   };
 
+  const signup=()=>{
+    setToggle("sign")
+  }
+
   return (
-    <div className="column">
-      <form className="box" onSubmit={handleSubmit}>
-        <h1 className="title has-text-centered">Login</h1>
-        <div className="field">
-          <label className="label">Email Address</label>
-          <div className="control">
-            <input
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input"
-              required
-            />
-          </div>
+    
+    <>
+    {toggle===("login")?<div className="login">
+      <div className="container">
+        <h1>Login to access to<br />your account</h1>
+    
+        <div className="login-form">
+          <form onSubmit={handleSubmit}>
+            <input type="email" placeholder="E-mail Address" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+            <ErrorMessage message={errorMessage} />
+
+            <div className="forget-pass">
+              <a href="#">Forgot Password ?</a>
+            </div>
+
+            <div className="is-flex p-2 together">
+            <button type="submit">LOG-IN</button>
+            
+            </div>
+          </form>
+          <button className="submit_2 ml-3 sign" onClick={signup}>Signup</button>
         </div>
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              type="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input"
-              required
-            />
-          </div>
-        </div>
-        <ErrorMessage message={errorMessage} />
-        <br />
-        <button className="button is-primary" type="submit">
-          Login
-        </button>
-      </form>
-    </div>
+    
+      </div>
+      </div>:(toggle===("sign")?<Register/>:null)}
+    
+</>
   );
 };
 
 export default Login;
+
