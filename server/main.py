@@ -2,8 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from models.models import Base
-from database.database import engine
+from database.database import engine, Base
 from routers import user, authentication
 
 app = FastAPI()

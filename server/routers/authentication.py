@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database import database
 from models import models
 from core import hashing
-from .jwtToken import create_access_token
+from core.jwtToken import create_access_token
 from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
 

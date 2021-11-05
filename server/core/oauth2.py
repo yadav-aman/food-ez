@@ -1,6 +1,6 @@
 from fastapi import status, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
-from routers.jwtToken import verify_token
+from .jwtToken import verify_token
 from database.database import get_db
 from sqlalchemy.orm import Session
 from models import models
