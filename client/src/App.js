@@ -5,10 +5,13 @@ import Login from "./components/Login";
 import Header from "./components/Header";
 import Table from "./components/Table";
 import { UserContext } from "./context/UserContext";
+import {BrowserRouter, Route, Switch  } from "react-router-dom"
+import "../src/style.css";
 
 const App = () => {
   const [message, setMessage] = useState("");
-  const [token] = useContext(UserContext);
+  const [token,setToken] = useContext(UserContext);
+  const [toggle,setToggle]=useState("login");
 
   const getWelcomeMessage = async () => {
     const requestOptions = {
@@ -27,28 +30,44 @@ const App = () => {
     }
   };
 
+ const login=()=>{
+  <Login />
+ }
+
+ const toggle_btn=()=>{
+   if(toggle==="login")
+   setToggle(true)
+   else if(toggle==="signup")
+   setToggle(false)
+ }
+
+
+
   useEffect(() => {
     getWelcomeMessage();
   }, []);
 
   return (
-    <>
-      <Header title={message} />
-      <div className="columns">
-        <div className="column"></div>
-        <div className="column m-5 is-two-thirds">
-          {!token ? (
-            <div className="columns">
-              <Register />
-              <Login />
-            </div>
-          ) : (
-            <Table />
-          )}
-        </div>
-        <div className="column"></div>
+    
+      <>
+      <div className="grid align__item">
+
+      <div className="parent clearfix">
+    <div className="bg-illustration">
+      <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"/>
+
+      <div className="burger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    </>
+
+    </div>
+    {toggle===("login")?<Login/>:(toggle===("signup")?<Register/>:null)}
+  </div>
+  </div>
+  
+  </>
   );
 };
 
