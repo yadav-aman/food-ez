@@ -1,5 +1,7 @@
+from sqlalchemy.sql.schema import ForeignKey
+from sqlalchemy.sql import func
 from database.database import Base
-from sqlalchemy import Column, Integer, String, Float, Boolean
+from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
 
 
 # database models
@@ -10,6 +12,7 @@ class User(Base):
     name = Column(String)
     username = Column(String)
     password = Column(String)
+    is_superuser = Column(Boolean, default=False)
 
 class Product(Base):
     __tablename__ = "products"
@@ -20,3 +23,10 @@ class Product(Base):
     qty = Column(Integer)
     is_veg = Column(Boolean)
 
+class Orders(Base):
+    __tablename__ = "orders"
+    id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, ForeignKey('products.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
+    qty = Column(Integer)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
