@@ -2,8 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 
-from sqlalchemy.sql.functions import mode
-
 from database.database import get_db
 from schemas import product
 from models import models
@@ -30,7 +28,7 @@ async def create_product(request: product.Product, db: Session = Depends(get_db)
     except:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
-@router.get('/all', response_model=List[product.Product])
+@router.get('/all', response_model=List[product.Show_Products])
 async def get_all(db: Session = Depends(get_db)):
     return db.query(models.Product).all()
     
