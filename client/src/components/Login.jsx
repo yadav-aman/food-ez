@@ -56,7 +56,7 @@ const Login = () => {
             <ErrorMessage message={errorMessage} />
 
             <div className="forget-pass">
-              <a href="#">Forgot Password ?</a>
+              <h3 onClick={signup} className="has-text-black">Forgot Password ?</h3>
             </div>
 
             <div className="is-flex p-2 together">
@@ -64,7 +64,8 @@ const Login = () => {
             
             </div>
           </form>
-          <button className="submit_2 ml-3 sign" onClick={signup}>Signup</button>
+          <h2 className="ml-1 has-text-black">Never Registered?</h2>
+          <button className="submit_2 sign mt-3" onClick={signup}>Signup</button>
         </div>
     
       </div>
