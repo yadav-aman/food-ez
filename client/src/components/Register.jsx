@@ -40,68 +40,6 @@ const Register = () => {
   };
 
   return (
-    // <div className="column">
-    //   <form className="box" onSubmit={handleSubmit}>
-    //     <h1 className="title has-text-centered">Register</h1>
-    //     <div className="field">
-    //       <label className="label">Name</label>
-    //       <div className="control">
-    //         <input
-    //           type="text"
-    //           placeholder="Enter name"
-    //           value={name}
-    //           onChange={(e) => setName(e.target.value)}
-    //           className="input"
-    //           required
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className="field">
-    //       <label className="label">Email Address</label>
-    //       <div className="control">
-    //         <input
-    //           type="email"
-    //           placeholder="Enter email"
-    //           value={email}
-    //           onChange={(e) => setEmail(e.target.value)}
-    //           className="input"
-    //           required
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className="field">
-    //       <label className="label">Password</label>
-    //       <div className="control">
-    //         <input
-    //           type="password"
-    //           placeholder="Enter password"
-    //           value={password}
-    //           onChange={(e) => setPassword(e.target.value)}
-    //           className="input"
-    //           required
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className="field">
-    //       <label className="label">Confirm Password</label>
-    //       <div className="control">
-    //         <input
-    //           type="password"
-    //           placeholder="Enter password"
-    //           value={confirmationPassword}
-    //           onChange={(e) => setConfirmationPassword(e.target.value)}
-    //           className="input"
-    //           required
-    //         />
-    //       </div>
-    //     </div>
-    //     <ErrorMessage message={errorMessage} />
-    //     <br />
-    //     <button className="button is-primary" type="submit">
-    //       Register
-    //     </button>
-    //   </form>
-    // </div>
 
 <div className="login">
     <div className="container">
