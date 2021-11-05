@@ -12,6 +12,7 @@ class User(Base):
     name = Column(String)
     username = Column(String)
     password = Column(String)
+    is_superuser = Column(Boolean, default=False)
 
 class Product(Base):
     __tablename__ = "products"

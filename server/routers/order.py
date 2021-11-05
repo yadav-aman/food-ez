@@ -41,7 +41,7 @@ async def create_order(request: order.Order, db: Session = Depends(get_db), curr
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
 @router.get('/all', response_model=List[order.Show_Order])
-async def get_all(db: Session = Depends(get_db)):
+async def get_all(db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_superuser)):
     return db.query(models.Orders).all()
 
 @router.get('/me', response_model=List[order.Show_Order])
