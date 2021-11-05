@@ -41,7 +41,7 @@ const App = () => {
    setToggle(false)
  }
 
-
+ 
 
   useEffect(() => {
     getWelcomeMessage();
@@ -54,11 +54,19 @@ const App = () => {
 
       <div className="parent clearfix">
     <div className="bg-illustration">
-      <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"/>
-
+      {/* <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"/> */}
+      {/* <img id="logo" src="https://i.ibb.co/rx6RnHW/logo.png" alt="logo" border="10" height="15" width="10"/> */}
+    <img id="logo" src="https://i.ibb.co/FDd5THW/Logo-food-ez.png" alt="Logo-food-ez" border="0"/>
+      
       <div className="burger-btn">
-        <span></span>
-        <span></span>
+        <span><img id="restaurant-table"
+          // src="LandingAssets.png"  height="23" width="30"
+          src ="https://i.ibb.co/JC29XSS/Landing-Assets.png"
+          alt="imageishere"  ></img>
+       </span>
+        <span>
+        <img id="three_ladies" src="https://i.ibb.co/gVQ5h3N/3.png" alt="3" border="0"/>
+        </span>
         <span></span>
       </div>
 

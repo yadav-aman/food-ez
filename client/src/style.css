@@ -59,8 +59,9 @@ img {
   position: relative;
   height: 100vh;
   width: 1194px;
-  background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center
-    center scroll;
+  /* background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center */
+    /* center scroll; */
+    background-color:rgb(86, 37, 154);
   background-size: cover;
   float: left;
   -webkit-animation: bgslide 2.3s forwards;
@@ -75,7 +76,24 @@ img {
   height: auto;
   margin: 19px 0 0 25px;
 }
+#logo{
+height: 25vh;
+width: 25vh;
+/* margin: 10px 20px 10px 5px; */
+margin-left: 50px;
+}
 
+#restaurant-table{
+  height: 80vh;
+  width: 80vh;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+#three_ladies{
+  visibility: hidden;
+  margin: -100px 10px 30px 20px;
+}
 @-webkit-keyframes bgslide {
   from {
     left: -100%;
