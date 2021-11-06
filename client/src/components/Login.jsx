@@ -3,6 +3,9 @@ import React, { useState, useContext } from "react";
 import ErrorMessage from "./ErrorMessage";
 import { UserContext } from "../context/UserContext";
 import Register from "./Register";
+import Welcome from "./Welcome";
+import Fetch from "./Fetch";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,6 +33,7 @@ const Login = () => {
       setErrorMessage(data.detail);
     } else {
       setToken(data.access_token);
+      window.location.href='/welcome_user';
     }
   };
 
@@ -45,7 +49,25 @@ const Login = () => {
   return (
     
     <>
-    {toggle===("login")?<div className="login">
+    {toggle===("login")? <div className="grid align__item">
+
+<div className="parent clearfix">
+<div className="bg-illustration">
+<img id="logo" src="https://i.ibb.co/FDd5THW/Logo-food-ez.png" alt="Logo-food-ez" border="0"/>
+
+<div className="burger-btn">
+  <span><img id="restaurant-table"
+    // src="LandingAssets.png"  height="23" width="30"
+    src ="https://i.ibb.co/JC29XSS/Landing-Assets.png"
+    alt="imageishere"  ></img>
+ </span>
+  <span>
+  <img id="three_ladies" src="https://i.ibb.co/gVQ5h3N/3.png" alt="3" border="0"/>
+  </span>
+  <span></span>
+</div>
+
+</div><div className="login">
       <div className="container">
         <h1>Login to access to<br />your account</h1>
     
@@ -68,6 +90,8 @@ const Login = () => {
           <button className="submit_2 sign mt-3" onClick={signup}>Signup</button>
         </div>
     
+      </div>
+      </div>
       </div>
       </div>:(toggle===("sign")?<Register/>:null)}
     

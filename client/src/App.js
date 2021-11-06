@@ -7,6 +7,8 @@ import Table from "./components/Table";
 import { UserContext } from "./context/UserContext";
 import {BrowserRouter, Route, Switch  } from "react-router-dom"
 import "../src/style.css";
+import Welcome from "./components/Welcome";
+import Fetch from "./components/Fetch";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -50,12 +52,20 @@ const App = () => {
   return (
     
       <>
-      <div className="grid align__item">
+      <BrowserRouter>
+      <Switch>
+      <Route path='/welcome_user'>
+        <Fetch />
+      </Route>
+      <Route path='/'>
+        <Login />
+      </Route>
+      </Switch>
+      </BrowserRouter> 
+      {/* <div className="grid align__item">
 
       <div className="parent clearfix">
     <div className="bg-illustration">
-      {/* <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo"/> */}
-      {/* <img id="logo" src="https://i.ibb.co/rx6RnHW/logo.png" alt="logo" border="10" height="15" width="10"/> */}
     <img id="logo" src="https://i.ibb.co/FDd5THW/Logo-food-ez.png" alt="Logo-food-ez" border="0"/>
       
       <div className="burger-btn">
@@ -73,7 +83,7 @@ const App = () => {
     </div>
     {toggle===("login")?<Login/>:(toggle===("signup")?<Register/>:null)}
   </div>
-  </div>
+  </div> */}
   
   </>
   );

@@ -46,8 +46,25 @@ const Register = () => {
   }
 
   return (
-<>
-    {toggle===("signin")?<div className="login">
+    <>
+    {toggle===("signin")?<div className="grid align__item">
+
+<div className="parent clearfix">
+<div className="bg-illustration">
+
+<img id="logo" src="https://i.ibb.co/FDd5THW/Logo-food-ez.png" alt="Logo-food-ez" border="0"/>
+
+<div className="burger-btn">
+  <span><img id="restaurant-table"
+    // src="LandingAssets.png"  height="23" width="30"
+    src ="https://i.ibb.co/JC29XSS/Landing-Assets.png"
+    alt="imageishere"  ></img>
+ </span>
+  <span>
+  <img id="three_ladies" src="https://i.ibb.co/gVQ5h3N/3.png" alt="3" border="0"/>
+  </span>
+  <span></span>
+</div></div><div className="login">
     <div className="container">
         <h1>Welcome to Food-ez<br />Register here:</h1>
     
@@ -66,7 +83,9 @@ const Register = () => {
         </div>
     
       </div>
-       </div>:(toggle===("login")?<Login/>:null)}
+      </div>
+      </div>
+      </div>:(toggle===("login")?<Login/>:null)}
        </>
       
   );
