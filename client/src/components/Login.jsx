@@ -32,6 +32,7 @@ const Login = () => {
       setErrorMessage(data.detail);
     } else {
       setToken(data.access_token);
+      alert("Logged in Successfully");
     }
   };
 
@@ -55,7 +56,7 @@ const Login = () => {
       {toggle === "login" ? (
         <div className="grid align__item">
           <div className="parent clearfix">
-            <div className="bg-illustration">
+            <div className="bg-illustration" >
               <img
                 id="logo"
                 src="https://i.ibb.co/FDd5THW/Logo-food-ez.png"
@@ -64,6 +65,7 @@ const Login = () => {
               />
               <img
                 id="restaurant-table"
+                className="animated img-fluid"
                 src="https://i.ibb.co/JC29XSS/Landing-Assets.png"
                 alt="imageishere"
               ></img>

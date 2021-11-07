@@ -44,6 +44,7 @@ const Fetch = () => {
             />
           ))
         )}
+        <button onClick={e=>{setToken(null)}}>Log Out</button>
       </div>
     );
   }

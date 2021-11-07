@@ -29,6 +29,7 @@ const Register = () => {
       setErrorMessage(data.detail);
     } else {
       setToken(data.access_token);
+      alert("Registered Successfully");
       history.push("/dashboard");
     }
   };
@@ -65,6 +66,7 @@ const Register = () => {
                 <span>
                   <img
                     id="restaurant-table"
+                    className="img-fluid animated"
                     // src="LandingAssets.png"  height="23" width="30"
                     src="https://i.ibb.co/JC29XSS/Landing-Assets.png"
                     alt="imageishere"
