@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.sql.functions import mode
 from schemas import user
 from models import models
 from sqlalchemy.orm import Session
@@ -33,6 +34,10 @@ async def create_user(request: user.User,db: Session = Depends(get_db)):
 @router.get('/me', response_model=user.Show_User)
 async def show_me(current_user: user = Depends(oauth2.get_current_user)):
     return current_user
+
+@router.get('/all')
+async def show_all(db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_superuser)):
+    return db.query(models.User).all()
 
 @router.post('/admin')
 async def create_admin(request: user.User,db: Session = Depends(get_db)):
