@@ -91,6 +91,12 @@ img {
   margin-left: 50px;
 }
 
+@media only screen and (max-width: 1026px) {
+  #restaurant-table {
+    visibility: hidden;
+  }
+}
+
 #three_ladies {
   visibility: hidden;
   margin: -100px 10px 30px 20px;

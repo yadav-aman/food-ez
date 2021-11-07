@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  const [token, setToken] = useState(localStorage.getItem("authentication"));
+  const [token, setToken] = useState(localStorage.getItem(""));
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -15,10 +15,7 @@ export const UserProvider = (props) => {
         },
       };
 
-      const response = await fetch(
-        "http://localhost:8000/user/me",
-        requestOptions
-      );
+      const response = await fetch("/users", requestOptions);
 
       if (!response.ok) {
         setToken(null);

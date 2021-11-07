@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import { Button, Form, Input, Divider, Alert } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
@@ -11,11 +11,13 @@ import {
   hideAuthMessage,
   authenticated,
 } from "../../../redux/actions/Auth";
-import JwtAuthService from "../../../services/JwtAuthService";
+// import JwtAuthService from "../../../services/JwtAuthService";
+import { UserContext } from "../../../context/UserContext";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export const LoginForm = (props) => {
+  const [, setToken] = useContext(UserContext);
   let history = useHistory();
 
   const {
@@ -35,16 +37,27 @@ export const LoginForm = (props) => {
     allowRedirect,
   } = props;
 
-  const onLogin = (values) => {
+  const onLogin = async (values) => {
     showLoading();
-    const fakeToken = "fakeToken";
-    JwtAuthService.login(values)
-      .then((resp) => {
-        authenticated(fakeToken);
-      })
-      .then((e) => {
-        showAuthMessage(e);
-      });
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: JSON.stringify(
+        `grant_type=&username=${values.email}&password=${values.password}&scope=&client_id=&client_secret=`
+      ),
+    };
+
+    const response = await fetch(
+      "http://localhost:8000/auth/login",
+      requestOptions
+    );
+    const data = await response.json();
+    if (!response.ok) {
+      alert("not valid");
+    } else {
+      setToken(data.access_token);
+    }
+    window.location.reload();
   };
 
   const onGoogleLogin = () => {

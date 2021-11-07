@@ -30,6 +30,6 @@ async def create_product(request: product.Product, db: Session = Depends(get_db)
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
 
 @router.get('/all', response_model=List[product.Show_Products])
-async def get_all(db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_superuser)):
+async def get_all(db: Session = Depends(get_db)):
     return db.query(models.Product).all()
     
