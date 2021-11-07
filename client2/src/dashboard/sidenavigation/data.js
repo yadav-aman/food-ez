@@ -1,52 +1,28 @@
-import HomeIcon from './icons/home';
-import TasksIcon from './icons/tasks';
-import ReportsIcon from './icons/reports';
-import SettingsIcon from './icons/settings';
-import CalendarIcon from './icons/calendar';
-import ProjectsIcon from './icons/projects';
-import TimeManageIcon from './icons/time-manage';
-import DocumentationIcon from './icons/documentation';
+import DashboardIcon from './icons/dashboard';
+import OrdersIcon from './icons/orders';
+import ProductIcons from './icons/products';
+import UsersIcon from './icons/users';
 
 const data = [
   {
     title: 'Dashboard',
-    icon: <HomeIcon />,
+    icon: <DashboardIcon />,
     link: '/',
   },
   {
-    title: 'Projects',
-    icon: <ProjectsIcon />,
-    link: '/admin/projects',
+    title: 'Users',
+    icon: <UsersIcon />,
+    link: '/admin/users',
   },
   {
-    title: 'My tasks',
-    icon: <TasksIcon />,
-    link: '/admin/tasks',
+    title: 'Products',
+    icon: <ProductIcons />,
+    link: '/admin/products',
   },
   {
-    title: 'Calendar',
-    icon: <CalendarIcon />,
-    link: '/admin/calendar',
-  },
-  {
-    title: 'Time manage',
-    icon: <TimeManageIcon />,
-    link: '/admin/time-manage',
-  },
-  {
-    title: 'Reports',
-    icon: <ReportsIcon />,
-    link: '/admin/reports',
-  },
-  {
-    title: 'Settings',
-    icon: <SettingsIcon />,
-    link: '/admin/settings',
-  },
-  {
-    title: 'Documentation',
-    icon: <DocumentationIcon />,
-    link: '/admin/documentation',
+    title: 'Orders',
+    icon: <OrdersIcon />,
+    link: '/admin/orders',
   },
 ];
 

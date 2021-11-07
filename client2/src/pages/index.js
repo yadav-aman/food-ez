@@ -1,5 +1,5 @@
-import Content from '../components/content';
+import Dashboard from '../components/dashboard';
 
 export default function HomePage() {
-  return <Content title="Google" />;
+  return <Dashboard title="Food-Ez" />;
 }
