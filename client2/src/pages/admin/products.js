@@ -33,10 +33,11 @@ const Products = () => {
           <h1>No data</h1>
         ) : (
           <section className="text-gray-600 body-font">
+         
             <div className="container px-5 py-24 mx-auto">
-              <div className="flex flex-wrap -m-4">
+              <div className="flex flex-wrap -m-6 backdrop-blur-lg ">
                 {items.map((item) => (
-                  <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
+                  <div className="lg:w-1/4 md:w-1/2 p-4 w-full  border-double rounded-lg border-4 border-light-blue-500">
                     <Link
                       to={`/product/${item.id}`}
                       className="block relative h-48 rounded overflow-hidden"
@@ -44,7 +45,10 @@ const Products = () => {
                       <img
                         alt="ecommerce"
                         className="object-cover object-center w-full h-full block"
-                        src="https://dummyimage.com/420x260"
+                        // src="https://dummyimage.com/420x260"
+                        // src="https://dummyimage.com/420x260"
+                        // src="`https://picsum.photos/200/300?random=${item.name}`"                       
+                        src="https://picsum.photos/200/300"
                       />
                     </Link>
                     <div className="mt-4">
