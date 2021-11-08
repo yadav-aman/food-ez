@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const Product = () => {
   const [item, setItem] = useState('');
   const [isLoaded, setLoaded] = useState(false);
   const [qty, setQty] = useState(1);
   const { id } = useParams();
+  const [token, setToken] = useContext(UserContext);
 
   useEffect(() => {
     requestItem();
@@ -195,7 +197,10 @@ const Product = () => {
                 onClick={async (e) => {
                   const requestOptions = {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                      'Content-Type': 'application/json',
+                      Authorization: `Bearer ${token}`,
+                    },
                     body: JSON.stringify({
                       product_id: item.id,
                       qty: qty,

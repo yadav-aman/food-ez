@@ -2,6 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import LogoutIcon from './icons/logout';
 
 import data from './data';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 const style = {
   title: `font-normal mx-4 text-sm`,
@@ -11,6 +13,7 @@ const style = {
 
 export default function SidenavItems() {
   const { pathname } = useLocation();
+  const [token, setToken] = useContext(UserContext);
   return (
     <ul>
       <li>
@@ -26,7 +29,12 @@ export default function SidenavItems() {
           </Link>
         ))}
         <div className="p-2 w-full">
-          <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+          <button
+            onClick={(e) => {
+              setToken(null);
+            }}
+            className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          >
             <span className="m-1 mr-2">
               <LogoutIcon />
             </span>

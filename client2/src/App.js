@@ -1,37 +1,51 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-import HomePage from './pages';
 import DashboardLayout from './dashboard/layout';
 import ProjectsPage from './pages/admin/projects';
 import CalendarPage from './pages/admin/calendar';
 import DashboardProvider from './dashboard/provider/context';
 import ProductsPage from './pages/admin/products';
 import ProductPage from './pages/admin/product';
+import Login from './components/Login';
+import Dashboard from './components/dashboard';
+import Register from './components/Register';
+import PrivateRoute from './routes/privateRoute';
+import PublicRoute from './routes/publicRoute';
 
 function App() {
   return (
     <Router>
-      <DashboardProvider>
-        <DashboardLayout>
-          <Switch>
-            <Route path="/" exact={true}>
-              <HomePage />
-            </Route>
-            <Route path="/admin/users" exact={true}>
+      <Switch>
+        <PublicRoute path="/login" exact={true}>
+          <Login />
+        </PublicRoute>
+        <PublicRoute path="/register" exact={true}>
+          <Register />
+        </PublicRoute>
+        <DashboardProvider>
+          <DashboardLayout>
+            <PrivateRoute path="/" exact={true}>
+              <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/dashboard" exact={true}>
+              <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/users" exact={true}>
               <CalendarPage />
-            </Route>
-            <Route path="/product/:id">
+            </PrivateRoute>
+            <PrivateRoute path="/product/:id">
               <ProductPage />
-            </Route>
-            <Route path="/products" exact={true}>
+            </PrivateRoute>
+            <PrivateRoute path="/products" exact={true}>
               <ProductsPage />
-            </Route>
-            <Route path="/admin/orders" exact={true}>
+            </PrivateRoute>
+            <PrivateRoute path="/admin/orders" exact={true}>
               <ProjectsPage />
-            </Route>
-          </Switch>
-        </DashboardLayout>
-      </DashboardProvider>
+            </PrivateRoute>
+            <Redirect from="*" to="/" />
+          </DashboardLayout>
+        </DashboardProvider>
+      </Switch>
     </Router>
   );
 }

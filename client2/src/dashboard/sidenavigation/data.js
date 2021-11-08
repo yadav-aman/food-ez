@@ -7,7 +7,7 @@ const data = [
   {
     title: 'Dashboard',
     icon: <DashboardIcon />,
-    link: '/',
+    link: '/admin/dashboard',
   },
   {
     title: 'Users',
