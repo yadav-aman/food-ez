@@ -23,7 +23,7 @@ async def create_order(request: order.Order, db: Session = Depends(get_db), curr
     if product.qty < request.qty :
         raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Understock")
     
-    if request.qty == 0:
+    if request.qty <= 0:
         raise HTTPException(status_code=status.HTTP_405_METHOD_NOT_ALLOWED, detail="Quantity must be greater than 0")
 
     new_order = models.Orders(

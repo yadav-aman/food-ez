@@ -17,7 +17,6 @@ const Products = () => {
 
     const json = await res.json();
     setItems(json);
-    console.table(items);
     setLoaded(true);
   };
 
@@ -39,7 +38,7 @@ const Products = () => {
                 {items.map((item) => (
                   <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
                     <Link
-                      to="/"
+                      to={`/product/${item.id}`}
                       className="block relative h-48 rounded overflow-hidden"
                     >
                       <img
@@ -53,7 +52,7 @@ const Products = () => {
                         {item.name}
                       </h1>
                       <h3 className=" text-gray-500 title-font text-xs font-medium">
-                        Description: {item.description}
+                        Quantity Left: {item.qty}
                       </h3>
                       <p className="mt-1">Price: ₹{item.price}/unit</p>
                     </div>

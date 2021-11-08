@@ -17,7 +17,7 @@ const data = [
   {
     title: 'Products',
     icon: <ProductIcons />,
-    link: '/admin/products',
+    link: '/products',
   },
   {
     title: 'Orders',

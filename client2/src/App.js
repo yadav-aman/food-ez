@@ -6,6 +6,7 @@ import ProjectsPage from './pages/admin/projects';
 import CalendarPage from './pages/admin/calendar';
 import DashboardProvider from './dashboard/provider/context';
 import ProductsPage from './pages/admin/products';
+import ProductPage from './pages/admin/product';
 
 function App() {
   return (
@@ -19,7 +20,10 @@ function App() {
             <Route path="/admin/users" exact={true}>
               <CalendarPage />
             </Route>
-            <Route path="/admin/products" exact={true}>
+            <Route path="/product/:id">
+              <ProductPage />
+            </Route>
+            <Route path="/products" exact={true}>
               <ProductsPage />
             </Route>
             <Route path="/admin/orders" exact={true}>

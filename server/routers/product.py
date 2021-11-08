@@ -33,3 +33,9 @@ async def create_product(request: product.Product, db: Session = Depends(get_db)
 async def get_all(db: Session = Depends(get_db)):
     return db.query(models.Product).all()
     
+@router.get('/{id}', response_model=product.Show_Products)
+async def get_product(id: int, db: Session = Depends(get_db)):
+    product = db.query(models.Product).filter(models.Product.id == id).first()
+    if not product:
+        HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+    return product
