@@ -36,7 +36,7 @@ const Product = () => {
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              BRAND NAME
+              CUISINE
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {item.name}
@@ -154,7 +154,7 @@ const Product = () => {
                   <h2 className="px-2">Non-Veg</h2>
                 )}
               </div>
-              <div className="flex items-center w-full">
+              <div className="flex items-center w-full mr-3">
                 <span className="mr-3">Servings</span>
                 <div className="flex flex-row h-10 w-1/2 rounded-lg relative bg-transparent mt-1">
                   <button
