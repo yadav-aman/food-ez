@@ -3,11 +3,15 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 
-const Content = () => {
+const Users = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [token, setToken] = useContext(UserContext);
 
+  useEffect(() => {
+    reqUsers();
+  }, []);
+  
   const reqUsers = async () => {
     const requestOptions = {
       method: 'GET',
@@ -39,18 +43,21 @@ const Content = () => {
       <section className="container mx-auto p-6 font-mono">
         <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
           <div className="w-full overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full capitalize">
               <thead>
                 <tr className="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                  <th className="px-4 py-3">Name</th>
                   <th className="px-4 py-3">ID</th>
-                  <th className="px-4 py-3">Username</th>
-                  <th className="px-4 py-3">Date</th>
+                  <th className="px-4 py-3">Name</th>
+                  <th className="px-4 py-3">Username</th>                  
+                  <th className="px-4 py-3">User Type</th>
                 </tr>
               </thead>
               <tbody className="bg-white">
                 {items.map((item) => (
                   <tr className="text-gray-700">
+                  <td className="px-4 py-3 text-ms font-semibold border">
+                      {item.id}
+                    </td>
                     <td className="px-4 py-3 border">
                       <div className="flex items-center text-sm">
                         <div className="relative w-8 h-8 mr-3 rounded-full md:block">
@@ -72,13 +79,10 @@ const Content = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-ms font-semibold border">
-                      {item.id}
-                    </td>
-                    <td className="px-4 py-3 text-xs border">
+                    <td className="px-4 py-3 text-xs border lowercase">
                       {item.username}
-                    </td>
-                    <td className="px-4 py-3 text-sm border">6/4/2000</td>
+                    </td>                   
+                    <td className="px-4 py-3 text-sm border">{item.is_superuser ? "Admin" : "User"}</td> 
                   </tr>
                 ))}
               </tbody>
@@ -90,4 +94,4 @@ const Content = () => {
   }
 };
 
-export default Content;
+export default Users;
