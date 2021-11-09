@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import Loader from './loader';
 
 const Users = () => {
   const [items, setItems] = useState([]);
@@ -11,7 +12,7 @@ const Users = () => {
   useEffect(() => {
     reqUsers();
   }, []);
-  
+
   const reqUsers = async () => {
     const requestOptions = {
       method: 'GET',
@@ -37,7 +38,7 @@ const Users = () => {
 
   if (!isLoaded) {
     reqUsers();
-    return <h1>Loading data</h1>;
+    return <Loader />;
   } else {
     return (
       <section className="container mx-auto p-6 font-mono">
@@ -48,14 +49,14 @@ const Users = () => {
                 <tr className="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                   <th className="px-4 py-3">ID</th>
                   <th className="px-4 py-3">Name</th>
-                  <th className="px-4 py-3">Username</th>                  
+                  <th className="px-4 py-3">Username</th>
                   <th className="px-4 py-3">User Type</th>
                 </tr>
               </thead>
               <tbody className="bg-white">
                 {items.map((item) => (
                   <tr className="text-gray-700">
-                  <td className="px-4 py-3 text-ms font-semibold border">
+                    <td className="px-4 py-3 text-ms font-semibold border">
                       {item.id}
                     </td>
                     <td className="px-4 py-3 border">
@@ -81,8 +82,10 @@ const Users = () => {
                     </td>
                     <td className="px-4 py-3 text-xs border lowercase">
                       {item.username}
-                    </td>                   
-                    <td className="px-4 py-3 text-sm border">{item.is_superuser ? "Admin" : "User"}</td> 
+                    </td>
+                    <td className="px-4 py-3 text-sm border">
+                      {item.is_superuser ? 'Admin' : 'User'}
+                    </td>
                   </tr>
                 ))}
               </tbody>
