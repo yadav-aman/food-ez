@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
+import Loader from '../../components/loader';
 
 const Product = () => {
   const [item, setItem] = useState('');
@@ -21,11 +22,7 @@ const Product = () => {
   };
 
   if (!isLoaded) {
-    return (
-      <div>
-        <h1>Loading data</h1>
-      </div>
-    );
+    return <Loader />;
   }
   return (
     <section className="text-gray-600 body-font overflow-hidden">
