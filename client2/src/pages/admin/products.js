@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-//import { useHistory } from 'react-router';
+import Loader from '../../components/loader';
 
 const Products = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-  //const [token, setToken] = useContext(UserContext);
-  //const history = useHistory();
 
   useEffect(() => {
     requestItems();
@@ -21,11 +19,7 @@ const Products = () => {
   };
 
   if (!isLoaded) {
-    return (
-      <div>
-        <h1>Loading data</h1>
-      </div>
-    );
+    return <Loader />;
   } else {
     return (
       <div>
@@ -33,7 +27,6 @@ const Products = () => {
           <h1>No data</h1>
         ) : (
           <section className="text-gray-600 body-font">
-         
             <div className="container px-5 py-24 mx-auto">
               <div className="flex flex-wrap -m-6 backdrop-blur-lg ">
                 {items.map((item) => (
@@ -47,7 +40,7 @@ const Products = () => {
                         className="object-cover object-center w-full h-full block"
                         // src="https://dummyimage.com/420x260"
                         // src="https://dummyimage.com/420x260"
-                        // src="`https://picsum.photos/200/300?random=${item.name}`"                       
+                        // src="`https://picsum.photos/200/300?random=${item.name}`"
                         src="https://picsum.photos/200/300"
                       />
                     </Link>
