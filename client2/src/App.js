@@ -28,9 +28,6 @@ function App() {
           </PublicRoute>
           <DashboardProvider>
             <DashboardLayout>
-              <PrivateRoute path="/" exact={true}>
-                <Dashboard />
-              </PrivateRoute>
               <PrivateRoute path="/admin/dashboard" exact={true}>
                 <Dashboard />
               </PrivateRoute>
@@ -46,7 +43,7 @@ function App() {
               <PrivateRoute path="/admin/orders" exact={true}>
                 <ProjectsPage />
               </PrivateRoute>
-              <Redirect from="*" to="/" />
+              <Redirect from="*" to="/admin/dashboard" />
             </DashboardLayout>
           </DashboardProvider>
         </Switch>
