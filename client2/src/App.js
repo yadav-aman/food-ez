@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import ProjectsPage from './pages/admin/projects';
-import CalendarPage from './pages/admin/calendar';
 import PrivateRoute from './routes/privateRoute';
 import PublicRoute from './routes/publicRoute';
 import Loader from './components/loader';
@@ -14,6 +13,7 @@ const DashboardProvider = lazy(() => import('./dashboard/provider/context'));
 const Dashboard = lazy(() => import('./components/dashboard'));
 const ProductsPage = lazy(() => import('./pages/admin/products'));
 const ProductPage = lazy(() => import('./pages/admin/product'));
+const UserPage = lazy(() => import('./components/Users'));
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
               <PrivateRoute path="/admin/users" exact={true}>
-                <CalendarPage />
+                <UserPage />
               </PrivateRoute>
               <PrivateRoute path="/product/:id">
                 <ProductPage />
