@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import DashboardLayout from './dashboard/layout';
 import ProjectsPage from './pages/admin/projects';
-import CalendarPage from './pages/admin/calendar';
+import UsersPage from './components/Users';
 import DashboardProvider from './dashboard/provider/context';
 import ProductsPage from './pages/admin/products';
 import ProductPage from './pages/admin/product';
@@ -31,7 +31,7 @@ function App() {
               <Dashboard />
             </PrivateRoute>
             <PrivateRoute path="/admin/users" exact={true}>
-              <CalendarPage />
+              <UsersPage />
             </PrivateRoute>
             <PrivateRoute path="/product/:id">
               <ProductPage />
