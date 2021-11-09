@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
-import ProjectsPage from './pages/admin/projects';
 import PrivateRoute from './routes/privateRoute';
 import PublicRoute from './routes/publicRoute';
 import Loader from './components/loader';
