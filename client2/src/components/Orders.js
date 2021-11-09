@@ -57,13 +57,11 @@ const Orders = () => {
                 {items.map((item) => (
                   <tr className="text-gray-700 text-center">
                     <td className="px-4 py-3 border">
-
                       <div>
                         <p className="font-semibold  text-black ">
                           {item.product_id}
                         </p>
                       </div>
-
                     </td>
                     <td className="px-4 py-3 text-ms font-semibold border">
                       {item.qty}
@@ -74,7 +72,10 @@ const Orders = () => {
                     <td className="px-4 py-3 text-ms font-semibold border">
                       {item.user_id}
                     </td>
-                    <td className="px-4 py-3 text-sm border">{new Date(item.created_at).toLocaleDateString()}, {(new Date(item.created_at).toTimeString()).substring(0, 9)}</td>
+                    <td className="px-4 py-3 text-sm border">
+                      {new Date(item.created_at).toLocaleDateString()},{' '}
+                      {new Date(item.created_at).toTimeString().substring(0, 9)}
+                    </td>
                     <td className="px-4 py-3 text-ms font-semibold border">
                       Pending/Accepted
                     </td>

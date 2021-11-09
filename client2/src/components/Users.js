@@ -37,7 +37,10 @@ const Users = () => {
   };
 
   if (!isLoaded) {
+<<<<<<< HEAD
     reqUsers();
+=======
+>>>>>>> 38c12e1b7cd7357da721d158c46a275a620c4a29
     return <Loader />;
   } else {
     return (
