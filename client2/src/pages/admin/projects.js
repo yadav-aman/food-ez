@@ -1,5 +1,5 @@
 import Content from '../../components/Users';
 
-export default function ProjectsPage() {
+export default function OrdersPage() {
   return <Content title="Projects" />;
 }

@@ -3,11 +3,15 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 
-const Content = () => {
+const Users = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [token, setToken] = useContext(UserContext);
 
+  useEffect(() => {
+    reqUsers();
+  }, []);
+  
   const reqUsers = async () => {
     const requestOptions = {
       method: 'GET',
@@ -90,4 +94,4 @@ const Content = () => {
   }
 };
 
-export default Content;
+export default Users;
