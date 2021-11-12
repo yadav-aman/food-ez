@@ -1,12 +1,12 @@
 export const doughnutLegends = [
-    { title: 'Shirts', color: 'bg-blue-500' },
-    { title: 'Shoes', color: 'bg-teal-600' },
-    { title: 'Bags', color: 'bg-purple-600' },
+    { title: 'Dinner', color: 'bg-blue-500' },
+    { title: 'Lunch', color: 'bg-green-600' },
+    { title: 'Breakfast', color: 'bg-purple-600' },
   ]
   
   export const lineLegends = [
-    { title: 'Organic', color: 'bg-teal-600' },
-    { title: 'Paid', color: 'bg-purple-600' },
+    { title: 'Expense', color: 'bg-green-600' },
+    { title: 'Income', color: 'bg-purple-600' },
   ]
   
   export const barLegends = [
@@ -18,7 +18,7 @@ export const doughnutLegends = [
     data: {
       datasets: [
         {
-          data: [33, 33, 33],
+          data: [28, 37, 35],
           /**
            * These colors come from Tailwind CSS palette
            * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
@@ -27,7 +27,7 @@ export const doughnutLegends = [
           label: 'Dataset 1',
         },
       ],
-      labels: ['Shoes', 'Shirts', 'Bags'],
+      labels: ['Breakfast', 'Lunch', 'Dinner'],
     },
     options: {
       responsive: true,
@@ -43,18 +43,18 @@ export const doughnutLegends = [
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label: 'Organic',
+          label: 'Expense',
           /**
            * These colors come from Tailwind CSS palette
            * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
            */
           backgroundColor: '#0694a2',
           borderColor: '#0694a2',
-          data: [43, 48, 40, 54, 67, 73, 70],
+          data: [43, 48, 40, 54, 67, 73, 50],
           fill: false,
         },
         {
-          label: 'Paid',
+          label: 'Income',
           fill: false,
           /**
            * These colors come from Tailwind CSS palette

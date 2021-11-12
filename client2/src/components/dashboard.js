@@ -6,7 +6,7 @@ import LogoutIcon from '../dashboard/sidenavigation/icons/logout';
 import PageTitle from './PageTitle';
 import ChartCard from './ChartCard';
 import ChartLegend from './ChartLegend';
-import Charts from './Charts';
+// import Charts from './Charts';
 import { Doughnut, Line } from 'react-chartjs-2';
 import {
   doughnutOptions,

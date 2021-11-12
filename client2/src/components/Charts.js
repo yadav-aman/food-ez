@@ -35,7 +35,7 @@ function Charts() {
         </ChartCard>
       </div>
     </>
-  )
+  ) 
 }
 
 export default Charts
