@@ -30,21 +30,21 @@ const Products = () => {
             <div className="container px-5 py-24 mx-auto">
               <div className="flex flex-wrap -m-6 backdrop-blur-lg ">
                 {items.map((item) => (
-                  <div className="lg:w-1/4 md:w-1/2 p-4 w-full  border-double rounded-lg border-4 border-light-blue-500">
+                  <div className="lg:w-1/4 md:w-1/2 p-4 w-full border-double rounded-lg border-4 border-light-blue-500">
                     <Link
                       to={`/product/${item.id}`}
                       className="block relative h-48 rounded overflow-hidden"
                     >
                       <img
                         alt="ecommerce"
-                        className="object-cover object-center w-full h-full block"
+                        className={"object-cover object-center w-full h-full block " +( item.qty <=0 ? "opacity-0": "opacity-100")}
                         // src="https://dummyimage.com/420x260"
                         // src="https://dummyimage.com/420x260"
                         // src="`https://picsum.photos/200/300?random=${item.name}`"
                         src="https://picsum.photos/200/300"
                       />
                     </Link>
-                    <div className="mt-4">
+                    <div className={"mt-4 " + (item.qty<=0 ? " filter blur-sm" : " filter blur-none" )}>
                       <h1 className="text-gray-900 text-lg tracking-widest title-font mb-1 font-bold">
                         {item.name}
                       </h1>

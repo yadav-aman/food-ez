@@ -25,7 +25,7 @@ export const UserProvider = (props) => {
       }
       localStorage.setItem('authentication', token);
     };
-    fetchUser();
+    fetchUser(); 
   }, [token]);
 
   return (
