@@ -55,9 +55,7 @@ const Login = () => {
               <form onSubmit={handleSubmit}>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <label for="" className="text-xs font-semibold px-1">
-                      Email
-                    </label>
+                    <label className="text-xs font-semibold px-1">Email</label>
                     <div className="flex">
                       <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                         <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
@@ -75,7 +73,7 @@ const Login = () => {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-12">
-                    <label for="" className="text-xs font-semibold px-1">
+                    <label className="text-xs font-semibold px-1">
                       Password
                     </label>
                     <div className="flex">
