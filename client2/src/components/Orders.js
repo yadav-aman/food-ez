@@ -45,9 +45,9 @@ const Orders = () => {
             <table className="w-full">
               <thead>
                 <tr className="text-md font-semibold text-center tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                  <th className="px-4 py-3">Product ID</th>
-                  <th className="px-4 py-3">Quantity</th>
                   <th className="px-4 py-3">Order ID</th>
+                  <th className="px-4 py-3">Product Name</th>
+                  <th className="px-4 py-3">Quantity</th>
                   <th className="px-4 py-3">User ID</th>
                   <th className="px-4 py-3">Order Time</th>
                   <th className="px-4 py-3">Order Status</th>
@@ -55,19 +55,17 @@ const Orders = () => {
               </thead>
               <tbody className="bg-white">
                 {items.map((item) => (
-                  <tr className="text-gray-700 text-center">
+                  <tr className="text-gray-700 text-center capitalize">
                     <td className="px-4 py-3 border">
                       <div>
-                        <p className="font-semibold  text-black ">
-                          {item.product_id}
-                        </p>
+                        <p className="font-semibold  text-black ">{item.id}</p>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-ms font-semibold border">
-                      {item.qty}
+                      {item.product_name.name}
                     </td>
-                    <td className="px-4 py-3 text-ms border font-semibold border">
-                      {item.id}
+                    <td className="px-4 py-3 text-ms font-semibold border">
+                      {item.qty}
                     </td>
                     <td className="px-4 py-3 text-ms font-semibold border">
                       {item.user_id}

@@ -18,7 +18,7 @@ export default function TopNavigation() {
                 &#8801;
               </button>
             </div>
-            <div className="flex group h-full items-center relative w-36 lg:w-64">
+            {/* <div className="flex group h-full items-center relative w-36 lg:w-64">
               <div className="absolute block cursor-pointer flex h-10 items-center justify-center p-3 pr-2 text-gray-500 text-sm uppercase w-auto sm:hidden">
                 <svg
                   fill="none"
@@ -47,7 +47,7 @@ export default function TopNavigation() {
               <div className="absolute border border-gray-300 h-auto hidden mr-2 px-2 py-1 right-0 rounded-2xl text-gray-400 text-xs md:block">
                 +
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center justify-end ml-5 p-1 relative w-1/4 sm:mr-0 sm:right-auto">
             <a href="#" className="block relative">

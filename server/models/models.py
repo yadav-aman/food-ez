@@ -14,6 +14,7 @@ class User(Base):
     username = Column(String)
     password = Column(String)
     is_superuser = Column(Boolean, default=False)
+    orders = relationship('Orders', back_populates='user_name')
 
 class Product(Base):
     __tablename__ = "products"
@@ -23,6 +24,7 @@ class Product(Base):
     price = Column(Float)
     qty = Column(Integer)
     is_veg = Column(Boolean)
+    orders = relationship('Orders', back_populates='product_name')
 
 class Orders(Base):
     __tablename__ = "orders"
@@ -31,5 +33,5 @@ class Orders(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     qty = Column(Integer)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    user_name = relationship('User', back_populates='name')
-    product_name = relationship('Product', back_populates='name')
+    user_name = relationship('User', back_populates='orders')
+    product_name = relationship('Product', back_populates='orders')
