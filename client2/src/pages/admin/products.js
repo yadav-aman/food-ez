@@ -26,7 +26,7 @@ const Products = () => {
         {!items.length ? (
           <h1>No data</h1>
         ) : (
-          <section className="text-gray-600 body-font">
+          <section className="text-gray-600 body-font capitalize">
             <div className="container px-5 py-24 mx-auto">
               <div className="flex flex-wrap -m-6 backdrop-blur-lg ">
                 {items.map((item) => (
@@ -52,7 +52,7 @@ const Products = () => {
                       <img
                         alt="ecommerce"
                         className={
-                          'object-cover object-center w-full block relative h-48 rounded overflow-hidden ' +
+                          'object-cover object-center w-full block relative h-48 rounded overflow-hidden' +
                           (item.qty <= 0 ? 'opacity-30' : 'opacity-100')
                         }
                         // src="https://dummyimage.com/420x260"
@@ -61,7 +61,7 @@ const Products = () => {
                         src="https://picsum.photos/200/300"
                       />
                     )}
-                    <div className="mt-4">
+                    <div className="mt-4 ">
                       <h1
                         className={
                           'text-gray-900 text-lg tracking-widest title-font mb-1 font-bold ' +
@@ -75,7 +75,7 @@ const Products = () => {
                           Quantity Left: {item.qty}
                         </h2>
                       ) : (
-                        <h1 className="font-bold">Out Of Stock</h1>
+                        <h1 className="font-bold text-red-500">Out Of Stock</h1>
                       )}
                       <p
                         className={

@@ -39,3 +39,13 @@ async def get_product(id: int, db: Session = Depends(get_db)):
     if not product:
         HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     return product
+
+@router.put('/{id}')
+async def update_product(id: int, qty: int ,db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_superuser)):
+    product = db.query(models.Product).filter(models.Product.id == id).first()
+    if not product:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'ProductID {id} does not exist')
+    product.qty += qty
+    db.commit()
+    return {'detail': "Quantity Updated"}
+    
