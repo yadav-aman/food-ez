@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Windmill } from '@windmill/react-ui'
 
 import { UserProvider } from './context/UserContext';
 
 ReactDOM.render(
   <UserProvider>
+  <Windmill dark="true">
     <App />
+    </Windmill>
   </UserProvider>,
   document.getElementById('root'),
 );

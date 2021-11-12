@@ -3,12 +3,24 @@ import InfoCard from './infocard';
 import moneyIcon from '../dashboard/sidenavigation/icons/money.svg';
 import RoundIcon from './RoundIcon';
 import LogoutIcon from '../dashboard/sidenavigation/icons/logout';
+import PageTitle from './PageTitle';
+import ChartCard from './ChartCard';
+import ChartLegend from './ChartLegend';
+import Charts from './Charts';
+import { Doughnut, Line } from 'react-chartjs-2';
+import {
+  doughnutOptions,
+  lineOptions,
+  doughnutLegends,
+  lineLegends,
+} from './ChartsData';
 
 const Dashboard = () => {
   {
     /* <Loader />; */
   }
   return (
+    <>
     <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
       <InfoCard title="Total clients" value="6389">
         <RoundIcon
@@ -46,6 +58,20 @@ const Dashboard = () => {
         />
       </InfoCard>
     </div>
+
+      <PageTitle>Charts</PageTitle>
+      <div className="grid gap-6 mb-8 md:grid-cols-2">
+        <ChartCard title="Revenue">
+          <Doughnut {...doughnutOptions} />
+          <ChartLegend legends={doughnutLegends} />
+        </ChartCard>
+
+        <ChartCard title="Traffic">
+          <Line {...lineOptions} />
+          <ChartLegend legends={lineLegends} />
+        </ChartCard>
+      </div>
+    </>
   );
 };
 export default Dashboard;

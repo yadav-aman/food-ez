@@ -44,7 +44,10 @@ const Login = () => {
       <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden max-w-screen-lg">
         <div className="md:flex w-full">
           <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
-            <AuthSvg />
+            {/* <AuthSvg /> */}
+            <img 
+              src="/images/Landing_Lady.png" alt="Landing"
+            />
           </div>
           <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
             <div className="text-center mb-10">
