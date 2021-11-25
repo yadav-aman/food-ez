@@ -24,14 +24,16 @@ function Charts() {
           <ChartLegend legends={doughnutLegends} />
         </ChartCard>
 
-        <ChartCard title="Lines">
-          <Line {...lineOptions} />
-          <ChartLegend legends={lineLegends} />
-        </ChartCard>
-
         <ChartCard title="Bars">
           <Bar {...barOptions} />
           <ChartLegend legends={barLegends} />
+        </ChartCard>
+      </div>
+
+      <div className="w-full">
+        <ChartCard title="Lines">
+          <Line {...lineOptions} />
+          <ChartLegend legends={lineLegends} />
         </ChartCard>
       </div>
     </>
