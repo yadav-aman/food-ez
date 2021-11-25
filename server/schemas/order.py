@@ -12,7 +12,7 @@ class Order(BaseModel):
 class Show_Order(Order):
     id: int
     user_id: int
-    user_name: Show_User
+    # user_name: Show_User
     product_name: Show_Products
     created_at: Any
     class Config():
