@@ -3,6 +3,10 @@ import InfoCard from './infocard';
 import moneyIcon from '../dashboard/sidenavigation/icons/money.svg';
 import RoundIcon from './RoundIcon';
 import LogoutIcon from '../dashboard/sidenavigation/icons/logout';
+import clientIcon from '../dashboard/sidenavigation/icons/clients';
+import salesIcon from '../dashboard/sidenavigation/icons/sales';
+import ordersIcon from '../dashboard/sidenavigation/icons/total_orders';
+import pendingIcon from '../dashboard/sidenavigation/icons/pending';
 import PageTitle from './PageTitle';
 import ChartCard from './ChartCard';
 import ChartLegend from './ChartLegend';
@@ -23,10 +27,10 @@ const Dashboard = () => {
   }
   return (
     <>
-      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-6 mb-8 mt-6 md:grid-cols-2 xl:grid-cols-4">
         <InfoCard title="Total clients" value="6389">
           <RoundIcon
-            icon={LogoutIcon}
+            icon={clientIcon}
             iconColorClass="text-orange-500 dark:text-orange-100"
             bgColorClass="bg-orange-100 dark:bg-orange-500"
             className="mr-4"
@@ -35,7 +39,7 @@ const Dashboard = () => {
 
         <InfoCard title="Total Sales Today" value="₹ 10,300">
           <RoundIcon
-            icon={LogoutIcon}
+            icon={salesIcon}
             iconColorClass="text-green-500 dark:text-green-100"
             bgColorClass="bg-green-100 dark:bg-green-500"
             className="mr-4"
@@ -44,7 +48,7 @@ const Dashboard = () => {
 
         <InfoCard title="Orders Today" value="376">
           <RoundIcon
-            icon={LogoutIcon}
+            icon={ordersIcon}
             iconColorClass="text-blue-500 dark:text-blue-100"
             bgColorClass="bg-blue-100 dark:bg-blue-500"
             className="mr-4"
@@ -53,7 +57,7 @@ const Dashboard = () => {
 
         <InfoCard title="Pending Orders" value="35">
           <RoundIcon
-            icon={LogoutIcon}
+            icon={pendingIcon}
             iconColorClass="text-teal-500 dark:text-teal-100"
             bgColorClass="bg-teal-100 dark:bg-teal-500"
             className="mr-4"
@@ -62,24 +66,23 @@ const Dashboard = () => {
       </div>
 
       <PageTitle>Charts</PageTitle>
-      
-      <div className="grid gap-6 mb-8 md:grid-cols-1">
-      <ChartCard title="Traffic">
-          <Line {...lineOptions} />
-          <ChartLegend legends={lineLegends} />
-        </ChartCard>
-      </div>
-      
-      <div className="grid gap-6 mb-8 md:grid-cols-2 ">
-        <ChartCard title="Revenue">
+
+      <div className="grid gap-6 mb-8 md:grid-cols-1 ">
+        {/* <ChartCard title="Revenue">
           <Doughnut {...doughnutOptions} />
           <ChartLegend legends={doughnutLegends} />
-        </ChartCard>
+        </ChartCard> */}
 
-        
         <ChartCard title="Traffic">
           <Bar {...barOptions} />
           <ChartLegend legends={barLegends} />
+        </ChartCard>
+      </div>
+
+      <div className="grid gap-6 mb-8 md:grid-cols-1 ">
+        <ChartCard title="Traffic">
+          <Line {...lineOptions} />
+          <ChartLegend legends={lineLegends} />
         </ChartCard>
       </div>
     </>
