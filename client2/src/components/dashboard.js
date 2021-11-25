@@ -7,12 +7,14 @@ import PageTitle from './PageTitle';
 import ChartCard from './ChartCard';
 import ChartLegend from './ChartLegend';
 // import Charts from './Charts';
-import { Doughnut, Line } from 'react-chartjs-2';
+import { Bar, Doughnut, Line } from 'react-chartjs-2';
 import {
   doughnutOptions,
   lineOptions,
   doughnutLegends,
   lineLegends,
+  barOptions,
+  barLegends,
 } from './ChartsData';
 
 const Dashboard = () => {
@@ -60,15 +62,24 @@ const Dashboard = () => {
       </div>
 
       <PageTitle>Charts</PageTitle>
-      <div className="grid gap-6 mb-8 md:grid-cols-2">
+      
+      <div className="grid gap-6 mb-8 md:grid-cols-1">
+      <ChartCard title="Traffic">
+          <Line {...lineOptions} />
+          <ChartLegend legends={lineLegends} />
+        </ChartCard>
+      </div>
+      
+      <div className="grid gap-6 mb-8 md:grid-cols-2 ">
         <ChartCard title="Revenue">
           <Doughnut {...doughnutOptions} />
           <ChartLegend legends={doughnutLegends} />
         </ChartCard>
 
+        
         <ChartCard title="Traffic">
-          <Line {...lineOptions} />
-          <ChartLegend legends={lineLegends} />
+          <Bar {...barOptions} />
+          <ChartLegend legends={barLegends} />
         </ChartCard>
       </div>
     </>
