@@ -21,6 +21,11 @@ const Orders = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [token, setToken] = useContext(UserContext);
+  const [isReady, setReady] = useState();
+
+  function Ready() {
+    setReady(!isReady);
+  }
 
   const reqOrders = async () => {
     const requestOptions = {
@@ -71,7 +76,10 @@ const Orders = () => {
                 </TableHeader>
                 <tbody>
                   {items.map((item) => (
-                    <tr className="text-gray-700 text-center capitalize">
+                    <tr
+                      className="text-gray-700 text-center capitalize"
+                      key={item.id}
+                    >
                       <td className="px-4 py-3 border">
                         <div>
                           <p className="font-semibold  text-black ">
@@ -94,11 +102,23 @@ const Orders = () => {
                           .toTimeString()
                           .substring(0, 9)}
                       </td>
-                      <td className="px-4 py-3 text-ms font-semibold border">
-                        <Badge type="primary">Pending</Badge>
-                      </td>
+                      {!isReady ? (
+                        <td className="px-4 py-3 text-ms font-semibold border">
+                          <Badge type="primary">Pending</Badge>
+                        </td>
+                      ) : (
+                        <td className="px-4 py-3 text-ms font-semibold border bg-success">
+                          <Badge type="primary">Ready</Badge>
+                        </td>
+                      )}
+                      {/* {isReady ? setReady(false) : ''} */}
                       <td className="border">
-                        <Button layout="link" size="icon" aria-label="Edit">
+                        <Button
+                          layout="link"
+                          size="icon"
+                          aria-label="Edit"
+                          onClick={Ready}
+                        >
                           <AcceptIcon className="w-6 h-6" aria-hidden="true" />
                         </Button>
                       </td>
