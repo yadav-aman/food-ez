@@ -32,6 +32,7 @@ class Orders(Base):
     product_id = Column(Integer, ForeignKey('products.id'))
     user_id = Column(Integer, ForeignKey('users.id'))
     qty = Column(Integer)
+    status = Column(String, default='pending')
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     user_name = relationship('User', back_populates='orders')
     product_name = relationship('Product', back_populates='orders')

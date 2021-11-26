@@ -15,5 +15,6 @@ class Show_Order(Order):
     # user_name: Show_User
     product_name: Show_Products
     created_at: Any
+    status: str
     class Config():
         orm_mode = True

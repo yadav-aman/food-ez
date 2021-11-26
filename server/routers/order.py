@@ -47,3 +47,12 @@ async def get_all(db: Session = Depends(get_db), current_user: user = Depends(oa
 @router.get('/me', response_model=List[order.Show_Order])
 async def get_my(db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_user)):
     return db.query(models.Orders).filter(models.Orders.user_id == current_user.id).all()
+
+@router.put('/accept/{order_id}')
+async def accept_order(order_id: int, db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_superuser)):
+    order = db.query(models.Orders).filter(models.Orders.id == order_id).first()
+    if not order:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Order {order_id} not found')
+    order.status = 'ready'
+    db.commit()
+    return {'detail': f"Order {order_id} ready to deliver"}
