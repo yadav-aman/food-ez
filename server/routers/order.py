@@ -2,8 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 
-from sqlalchemy.sql.functions import mode, now
-
 from database.database import get_db
 from schemas import order, user
 from core import oauth2
