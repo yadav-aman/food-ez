@@ -31,7 +31,7 @@ const data = [
   {
     title: 'My Orders',
     icon: <OrdersIcon />,
-    link: '/myorders',
+    link: '/user/orders',
     access: ['users'],
   },
 ];
