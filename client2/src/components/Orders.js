@@ -21,11 +21,27 @@ const Orders = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [token, setToken] = useContext(UserContext);
-  const [isReady, setReady] = useState();
 
-  function Ready() {
-    setReady(!isReady);
-  }
+  // function Ready(id) {
+  //   const setOrder = async () => {
+  //     const requestOptions = {
+  //       method: 'PUT',
+  //       headers: {
+  //         'content-type': 'application/json',
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     };
+
+  //     const response = await fetch(
+  //       `http://localhost:8000/order/accept/${id}`,
+  //       requestOptions,
+  //     );
+
+  //     // const json = await response.json();
+  //     // setItems(json);
+  //     // setLoaded(true);
+  //   };
+  // }
 
   const reqOrders = async () => {
     const requestOptions = {
@@ -102,26 +118,44 @@ const Orders = () => {
                           .toTimeString()
                           .substring(0, 9)}
                       </td>
-                      {!isReady ? (
+                      {item.status === 'pending' ? (
                         <td className="px-4 py-3 text-ms font-semibold border">
                           <Badge type="primary">Pending</Badge>
                         </td>
                       ) : (
-                        <td className="px-4 py-3 text-ms font-semibold border bg-success">
-                          <Badge type="primary">Ready</Badge>
+                        <td className="px-4 py-3 text-ms font-semibold border">
+                          <Badge type="success">Ready</Badge>
                         </td>
                       )}
-                      {/* {isReady ? setReady(false) : ''} */}
-                      <td className="border">
-                        <Button
-                          layout="link"
-                          size="icon"
-                          aria-label="Edit"
-                          onClick={Ready}
-                        >
-                          <AcceptIcon className="w-6 h-6" aria-hidden="true" />
-                        </Button>
-                      </td>
+                      {item.status === 'ready' ? (
+                        <td className="border">
+                          <Button
+                            layout="link"
+                            size="icon"
+                            aria-label="Edit"
+                            disabled
+                          >
+                            <AcceptIcon
+                              className="w-6 h-6"
+                              aria-hidden="true"
+                            />
+                          </Button>
+                        </td>
+                      ) : (
+                        <td className="border">
+                          <Button
+                            layout="link"
+                            size="icon"
+                            aria-label="Edit"
+                            /*onClick={Ready(item.id)}*/
+                          >
+                            <AcceptIcon
+                              className="w-6 h-6"
+                              aria-hidden="true"
+                            />
+                          </Button>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
