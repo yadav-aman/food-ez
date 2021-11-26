@@ -6,42 +6,32 @@ import {
   Table,
   TableHeader,
   TableCell,
-  TableBody,
-  TableRow,
   TableFooter,
   TableContainer,
   Badge,
-  Avatar,
   Button,
-  Pagination,
 } from '@windmill/react-ui';
 import AcceptIcon from './icons/accept';
 
 const Orders = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-  const [token, setToken] = useContext(UserContext);
+  const [token] = useContext(UserContext);
+  const [acceptButton, setAcceptButton] = useState(false);
+  const [filterToggle, setFilterToggle] = useState(true);
 
-  // function Ready(id) {
-  //   const setOrder = async () => {
-  //     const requestOptions = {
-  //       method: 'PUT',
-  //       headers: {
-  //         'content-type': 'application/json',
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     };
+  const setOrder = async (id) => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-  //     const response = await fetch(
-  //       `http://localhost:8000/order/accept/${id}`,
-  //       requestOptions,
-  //     );
-
-  //     // const json = await response.json();
-  //     // setItems(json);
-  //     // setLoaded(true);
-  //   };
-  // }
+    await fetch(`http://localhost:8000/order/accept/${id}`, requestOptions);
+    setAcceptButton(!acceptButton);
+  };
 
   const reqOrders = async () => {
     const requestOptions = {
@@ -68,7 +58,7 @@ const Orders = () => {
 
   useEffect(() => {
     reqOrders();
-  }, []);
+  }, [acceptButton]);
 
   if (!isLoaded) {
     return <Loader />;
@@ -86,78 +76,88 @@ const Orders = () => {
                     <TableCell>Quantity</TableCell>
                     <TableCell>User ID</TableCell>
                     <TableCell>Order Time</TableCell>
-                    <TableCell>Order Status</TableCell>
+                    <TableCell>
+                      <div>ORDER STATUS</div>
+                      <button
+                        className="text-blue-200"
+                        onClick={(e) => setFilterToggle(!filterToggle)}
+                      >
+                        Show
+                        {filterToggle ? ' All' : ' Pending'}
+                      </button>
+                    </TableCell>
                     <TableCell>Order Ready</TableCell>
                   </tr>
                 </TableHeader>
                 <tbody>
-                  {items.map((item) => (
-                    <tr
-                      className="text-gray-700 text-center capitalize"
-                      key={item.id}
-                    >
-                      <td className="px-4 py-3 border">
-                        <div>
-                          <p className="font-semibold  text-black ">
-                            {item.id}
-                          </p>
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-ms font-semibold border">
-                        {item.product_name.name}
-                      </td>
-                      <td className="px-4 py-3 text-ms font-semibold border">
-                        {item.qty}
-                      </td>
-                      <td className="px-4 py-3 text-ms font-semibold border">
-                        {item.user_id}
-                      </td>
-                      <td className="px-4 py-3 text-sm border">
-                        {new Date(item.created_at).toLocaleDateString()},{' '}
-                        {new Date(item.created_at)
-                          .toTimeString()
-                          .substring(0, 9)}
-                      </td>
-                      {item.status === 'pending' ? (
+                  {items
+                    .filter((item) =>
+                      filterToggle ? item.status === 'pending' : item,
+                    )
+                    .map((item) => (
+                      <tr
+                        className="text-gray-700 text-center capitalize"
+                        key={item.id}
+                      >
+                        <td className="px-4 py-3 border">
+                          <div>
+                            <p className="font-semibold  text-black ">
+                              {item.id}
+                            </p>
+                          </div>
+                        </td>
                         <td className="px-4 py-3 text-ms font-semibold border">
-                          <Badge type="primary">Pending</Badge>
+                          {item.product_name.name}
                         </td>
-                      ) : (
                         <td className="px-4 py-3 text-ms font-semibold border">
-                          <Badge type="success">Ready</Badge>
+                          {item.qty}
                         </td>
-                      )}
-                      {item.status === 'ready' ? (
-                        <td className="border">
-                          <Button
-                            layout="link"
-                            size="icon"
-                            aria-label="Edit"
-                            disabled
-                          >
-                            <AcceptIcon
-                              className="w-6 h-6"
-                              aria-hidden="true"
-                            />
-                          </Button>
+                        <td className="px-4 py-3 text-ms font-semibold border">
+                          {item.user_id}
                         </td>
-                      ) : (
-                        <td className="border">
-                          <Button
-                            layout="link"
-                            size="icon"
-                            aria-label="Edit"
-                            /*onClick={Ready(item.id)}*/
-                          >
-                            <AcceptIcon
-                              className="w-6 h-6"
-                              aria-hidden="true"
-                            />
-                          </Button>
+                        <td className="px-4 py-3 text-sm border">
+                          {new Date(item.created_at).toLocaleDateString()},{' '}
+                          {new Date(item.created_at)
+                            .toTimeString()
+                            .substring(0, 9)}
                         </td>
-                      )}
-                    </tr>
-                  ))}
+                        <td className="px-4 py-3 text-ms font-semibold border">
+                          {item.status === 'pending' ? (
+                            <Badge type="warning">Pending</Badge>
+                          ) : (
+                            <Badge type="primary">Ready</Badge>
+                          )}
+                        </td>
+                        <td className="border" key={item.id}>
+                          {item.status === 'ready' ? (
+                            <Button
+                              layout="link"
+                              size="icon"
+                              aria-label="Edit"
+                              disabled
+                            >
+                              <AcceptIcon
+                                className="w-6 h-6"
+                                aria-hidden="true"
+                              />
+                            </Button>
+                          ) : (
+                            <Button
+                              layout="link"
+                              size="icon"
+                              aria-label="Edit"
+                              onClick={(e) => setOrder(item.id)}
+                              key={item.id}
+                            >
+                              <AcceptIcon
+                                className="w-6 h-6"
+                                aria-hidden="true"
+                              />
+                            </Button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </Table>
               <TableFooter />

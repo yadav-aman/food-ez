@@ -8,7 +8,7 @@ const Product = () => {
   const [isLoaded, setLoaded] = useState(false);
   const [qty, setQty] = useState(1);
   const { id } = useParams();
-  const [token, setToken] = useContext(UserContext);
+  const [token] = useContext(UserContext);
 
   useEffect(() => {
     requestItem();
@@ -169,7 +169,7 @@ const Product = () => {
                   </button>
                   <input
                     type="number"
-                    className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                    className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
                     name="custom-input-number"
                     value={qty}
                   ></input>
@@ -217,7 +217,7 @@ const Product = () => {
                   }
                 }}
               >
-                Add to Cart
+                Place Order
               </button>
               <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg

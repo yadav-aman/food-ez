@@ -23,7 +23,7 @@ async def get_data(db: Session = Depends(get_db), current_user: user = Depends(o
     total_sales = 0.0
     for x in sales.all():
         price = db.query(models.Product.price).filter(models.Product.id == x.product_id).scalar()
-        total_sales += price
+        total_sales += (price * x.qty)
     response.update({'sales' : total_sales})
 
     orders = db.query(models.Orders).count()
@@ -32,7 +32,7 @@ async def get_data(db: Session = Depends(get_db), current_user: user = Depends(o
     completed_orders = sales.count()
     response.update({'completed': completed_orders})
 
-
     pending_orders = orders - completed_orders
     response.update({"pending": pending_orders})
+    
     return response    

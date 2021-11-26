@@ -63,7 +63,7 @@ const Users = () => {
                         <div className="relative w-8 h-8 mr-3 rounded-full md:block">
                           <img
                             className="object-cover w-full h-full rounded-full"
-                            src="https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                            src={`https://ui-avatars.com/api/?background=random&name=${item.name}`}
                             alt=""
                             loading="lazy"
                           />
