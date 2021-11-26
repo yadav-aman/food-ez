@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 function ChartCard({ children, title }) {
   return (
-    <div className="min-w-0 p-4 bg-white rounded-lg w-4/5 shadow-xs dark:bg-gray-800">
-      <p className="mb-4 font-semibold text-gray-800 dark:text-gray-300">{title}</p>
+    <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+      <p className="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+        {title}
+      </p>
       {children}
     </div>
-  )
+  );
 }
 
-export default ChartCard
+export default ChartCard;

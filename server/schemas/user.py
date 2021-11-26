@@ -9,7 +9,7 @@ class User(BaseModel):
 class Show_User(BaseModel):
     name: str
     username: str
-    # is_superuser: bool
+    is_superuser: bool
     # preferences: List[Preferences] = []
     class Config():
         orm_mode = True

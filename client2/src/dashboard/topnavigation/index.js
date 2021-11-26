@@ -1,15 +1,26 @@
 import { useToggle } from '../provider/context';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 export default function TopNavigation() {
   const { toggle } = useToggle();
-  const [name, setName]= useState("U");
-  const requestName= async()=>{
-    const res = await fetch(`http://localhost:8000/user/me`);
+  const [token, setToken] = useContext(UserContext);
+  const [name, setName] = useState('U');
+
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  };
+
+  const requestName = async () => {
+    const res = await fetch(`http://localhost:8000/user/me`, requestOptions);
 
     const json = await res.json();
     setName(json);
-  }
+  };
 
   useEffect(() => {
     requestName();

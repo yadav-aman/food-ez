@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import LogoutIcon from './icons/logout';
 
 import data from './data';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext';
 
 const style = {
@@ -14,20 +14,50 @@ const style = {
 export default function SidenavItems() {
   const { pathname } = useLocation();
   const [token, setToken] = useContext(UserContext);
+  const [isAdmin, setAdmin] = useState(false);
+
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    },
+  };
+
+  const fetchAdmin = async () => {
+    const res = await fetch(`http://localhost:8000/user/me`, requestOptions);
+    const json = await res.json();
+    setAdmin(json.is_superuser);
+  };
+
+  useEffect(() => {
+    fetchAdmin();
+  }, []);
+
   return (
     <ul>
       <li>
-        {data.map((item) => (
-          <Link to={item.link} key={item.title}>
-            <span
-              className={`${style.link} 
-              ${item.link === pathname && style.active}`}
-            >
-              <span>{item.icon}</span>
-              <span className={style.title}>{item.title}</span>
-            </span>
-          </Link>
-        ))}
+        {data
+          .filter((item) =>
+            isAdmin
+              ? item.access.includes('admin')
+                ? item
+                : ''
+              : item.access.includes('users')
+              ? item
+              : '',
+          )
+          .map((item) => (
+            <Link to={item.link} key={item.title}>
+              <span
+                className={`${style.link} 
+                      ${item.link === pathname && style.active}`}
+              >
+                <span>{item.icon}</span>
+                <span className={style.title}>{item.title}</span>
+              </span>
+            </Link>
+          ))}
         <div className="p-2 w-full">
           <button
             onClick={(e) => {
