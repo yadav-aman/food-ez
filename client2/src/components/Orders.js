@@ -2,6 +2,20 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import Loader from './loader';
+import {
+  Table,
+  TableHeader,
+  TableCell,
+  TableBody,
+  TableRow,
+  TableFooter,
+  TableContainer,
+  Badge,
+  Avatar,
+  Button,
+  Pagination,
+} from '@windmill/react-ui';
+import AcceptIcon from './icons/accept';
 
 const Orders = () => {
   const [items, setItems] = useState([]);
@@ -40,47 +54,60 @@ const Orders = () => {
   } else {
     return (
       <section className="container mx-auto p-6 font-mono">
-        <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-          <div className="w-full overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="text-md font-semibold text-center tracking-wide text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                  <th className="px-4 py-3">Order ID</th>
-                  <th className="px-4 py-3">Product Name</th>
-                  <th className="px-4 py-3">Quantity</th>
-                  <th className="px-4 py-3">User ID</th>
-                  <th className="px-4 py-3">Order Time</th>
-                  <th className="px-4 py-3">Order Status</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {items.map((item) => (
-                  <tr className="text-gray-700 text-center capitalize">
-                    <td className="px-4 py-3 border">
-                      <div>
-                        <p className="font-semibold  text-black ">{item.id}</p>
-                      </div>
-                    </td>
-                    <td className="px-4 py-3 text-ms font-semibold border">
-                      {item.product_name.name}
-                    </td>
-                    <td className="px-4 py-3 text-ms font-semibold border">
-                      {item.qty}
-                    </td>
-                    <td className="px-4 py-3 text-ms font-semibold border">
-                      {item.user_id}
-                    </td>
-                    <td className="px-4 py-3 text-sm border">
-                      {new Date(item.created_at).toLocaleDateString()},{' '}
-                      {new Date(item.created_at).toTimeString().substring(0, 9)}
-                    </td>
-                    <td className="px-4 py-3 text-ms font-semibold border">
-                      Pending/Accepted
-                    </td>
+        <div className="w-full mb-8 rounded-lg shadow-lg">
+          <div className="w-full">
+            <TableContainer className="w-full">
+              <Table>
+                <TableHeader>
+                  <tr className="text-center">
+                    <TableCell>Order ID</TableCell>
+                    <TableCell>Product Name</TableCell>
+                    <TableCell>Quantity</TableCell>
+                    <TableCell>User ID</TableCell>
+                    <TableCell>Order Time</TableCell>
+                    <TableCell>Order Status</TableCell>
+                    <TableCell>Order Ready</TableCell>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </TableHeader>
+                <tbody>
+                  {items.map((item) => (
+                    <tr className="text-gray-700 text-center capitalize">
+                      <td className="px-4 py-3 border">
+                        <div>
+                          <p className="font-semibold  text-black ">
+                            {item.id}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-ms font-semibold border">
+                        {item.product_name.name}
+                      </td>
+                      <td className="px-4 py-3 text-ms font-semibold border">
+                        {item.qty}
+                      </td>
+                      <td className="px-4 py-3 text-ms font-semibold border">
+                        {item.user_id}
+                      </td>
+                      <td className="px-4 py-3 text-sm border">
+                        {new Date(item.created_at).toLocaleDateString()},{' '}
+                        {new Date(item.created_at)
+                          .toTimeString()
+                          .substring(0, 9)}
+                      </td>
+                      <td className="px-4 py-3 text-ms font-semibold border">
+                        <Badge type="primary">Pending</Badge>
+                      </td>
+                      <td className="border">
+                        <Button layout="link" size="icon" aria-label="Edit">
+                          <AcceptIcon className="w-6 h-6" aria-hidden="true" />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+              <TableFooter />
+            </TableContainer>
           </div>
         </div>
       </section>
