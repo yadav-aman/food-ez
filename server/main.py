@@ -3,9 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from database.database import engine, Base
-from routers import user, authentication, product, order
+from routers import user, authentication, product, order, dashboard
 
-app = FastAPI()
+app = FastAPI(
+    title="Food Ez"
+)
 
 origins = ['http://localhost:3000','localhost:3000']
 
@@ -20,6 +22,7 @@ app.add_middleware(
 Base.metadata.create_all(engine)
 
 app.include_router(authentication.router)
+app.include_router(dashboard.router)
 app.include_router(user.router)
 app.include_router(product.router)
 app.include_router(order.router)
