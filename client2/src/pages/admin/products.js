@@ -45,12 +45,6 @@ const Products = () => {
                             'object-cover object-center w-full h-full block ' +
                             (item.qty <= 0 ? 'opacity-30' : 'opacity-100')
                           }
-                          // src="https://dummyimage.com/420x260"
-                          // src="https://dummyimage.com/420x260"
-                          // src="`https://picsum.photos/200/300?random=${item.name}`"
-                          // src="https://picsum.photos/200/300"
-                          // src={`https://source.unsplash.com/200x200/?${item.name},{food}`}
-                          // src="https://api.unsplash.com/photos/?client_id=VpBWfYu7Fk0niO0tx6u9MZNodtaISpZEQ2w3Igt8sw4?query="
                           src={`/images/${item.id}.jpg`}
                         />
                       </Link>
