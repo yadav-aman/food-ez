@@ -1,7 +1,9 @@
+import AddProductIcon from './icons/AddProductIcon';
 import DashboardIcon from './icons/dashboard';
 import OrdersIcon from './icons/orders';
 import ProductIcons from './icons/products';
 import UsersIcon from './icons/users';
+import UpdateStockIcon from './icons/UpdateStockIcon';
 
 const data = [
   {
@@ -33,6 +35,18 @@ const data = [
     icon: <OrdersIcon />,
     link: '/user/orders',
     access: ['users'],
+  },
+  {
+    title: 'Add Product',
+    icon: <AddProductIcon />,
+    link: '/admin/product',
+    access: ['admin'],
+  },
+  {
+    title: 'Update Stock',
+    icon: <UpdateStockIcon />,
+    link: '/admin/update',
+    access: ['admin'],
   },
 ];
 

@@ -27,6 +27,9 @@ const Products = () => {
           <h1>No data</h1>
         ) : (
           <section className="text-gray-600 body-font capitalize">
+            <h1 className=" text-3xl font-semibold  text-black text-center mt-8">
+              Welcome to SNU Dining Hall
+            </h1>
             <div className="container px-5 py-24 mx-auto">
               <div className="flex flex-wrap -m-6 backdrop-blur-lg ">
                 {items.map((item) => (

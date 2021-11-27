@@ -3,6 +3,13 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import Loader from './loader';
+import {
+  Table,
+  TableHeader,
+  TableCell,
+  TableFooter,
+  TableContainer,
+} from '@windmill/react-ui';
 
 const Users = () => {
   const [items, setItems] = useState([]);
@@ -43,52 +50,55 @@ const Users = () => {
       <section className="container mx-auto p-6 font-mono">
         <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
           <div className="w-full overflow-x-auto">
-            <table className="w-full capitalize">
-              <thead>
-                <tr className="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                  <th className="px-4 py-3">ID</th>
-                  <th className="px-4 py-3">Name</th>
-                  <th className="px-4 py-3">Username</th>
-                  <th className="px-4 py-3">User Type</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white">
-                {items.map((item) => (
-                  <tr className="text-gray-700">
-                    <td className="px-4 py-3 text-ms font-semibold border">
-                      {item.id}
-                    </td>
-                    <td className="px-4 py-3 border">
-                      <div className="flex items-center text-sm">
-                        <div className="relative w-8 h-8 mr-3 rounded-full md:block">
-                          <img
-                            className="object-cover w-full h-full rounded-full"
-                            src={`https://ui-avatars.com/api/?background=random&name=${item.name}`}
-                            alt=""
-                            loading="lazy"
-                          />
-                          <div
-                            className="absolute inset-0 rounded-full shadow-inner"
-                            aria-hidden="true"
-                          ></div>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-black">
-                            {item.name}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-4 py-3 text-xs border lowercase">
-                      {item.username}
-                    </td>
-                    <td className="px-4 py-3 text-sm border">
-                      {item.is_superuser ? 'Admin' : 'User'}
-                    </td>
+            <TableContainer className="w-full capitalize">
+              <Table>
+                <TableHeader>
+                  <tr className="text-md font-semibold text-cente uppercase border-b border-gray-600">
+                    <TableCell>ID</TableCell>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Username</TableCell>
+                    <TableCell>User Type</TableCell>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </TableHeader>
+                <tbody className="bg-white">
+                  {items.map((item) => (
+                    <tr className="text-gray-700">
+                      <td className="px-4 py-3 text-ms font-semibold border">
+                        {item.id}
+                      </td>
+                      <td className="px-4 py-3 border">
+                        <div className="flex items-center text-sm">
+                          <div className="relative w-8 h-8 mr-3 rounded-full md:block">
+                            <img
+                              className="object-cover w-full h-full rounded-full"
+                              src={`https://ui-avatars.com/api/?background=random&name=${item.name}`}
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              className="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p className="font-semibold text-black">
+                              {item.name}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-xs border lowercase">
+                        {item.username}
+                      </td>
+                      <td className="px-4 py-3 text-sm border">
+                        {item.is_superuser ? 'Admin' : 'User'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+              <TableFooter />
+            </TableContainer>
           </div>
         </div>
       </section>

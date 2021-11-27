@@ -15,6 +15,8 @@ const ProductPage = lazy(() => import('./pages/admin/product'));
 const UserPage = lazy(() => import('./components/Users'));
 const OrdersPage = lazy(() => import('./components/Orders'));
 const MyOrdersPage = lazy(() => import('./components/MyOrders'));
+const AddProductPage = lazy(() => import('./components/AddProduct'));
+const UpdateStockPage = lazy(() => import('./components/UpdateStock'));
 
 function App() {
   return (
@@ -46,6 +48,12 @@ function App() {
               </PrivateRoute>
               <PrivateRoute path="/user/orders" exact={true}>
                 <MyOrdersPage />
+              </PrivateRoute>
+              <PrivateRoute path="/admin/product" exact={true}>
+                <AddProductPage />
+              </PrivateRoute>
+              <PrivateRoute path="/admin/update" exact={true}>
+                <UpdateStockPage />
               </PrivateRoute>
               <Redirect from="*" to="/admin/dashboard" />
             </DashboardLayout>
