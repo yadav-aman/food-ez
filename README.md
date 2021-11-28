@@ -74,3 +74,16 @@ $ npm start
 ```
 
 - Now we can access our app on [localhost:3000](http://localhost:3000)
+
+## Credentials for Demo
+
+- Admin Login
+  ```
+  username = admin@foodez.in
+  password = 123456
+  ```
+- Normal User
+  ```
+  username = ay133@snu.edu.in
+  password = 123456
+  ```
