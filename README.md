@@ -4,7 +4,7 @@
 
 # Project Name - Food Ez
 
-### Contactless of food ordering and inventory management
+### Contactless food ordering and inventory management
 
 ---
 
@@ -35,7 +35,7 @@
 
 > For this python>= 3.8 is required
 
-## Open terminal and run the following commands
+## Open a terminal and run the following commands
 
 - ### Installing Dependencies
   ```bash
@@ -59,13 +59,13 @@
   $ python3 server/main.py
   ```
 
-- Now the server is hosted at localhost:8000, and the API documentation along with all the end points can be accessed at [localhost:8000/docs](http://localhost:8000/docs)
+- Now, the server is hosted at localhost:8000, and the API documentation along with all the endpoints can be accessed at [localhost:8000/docs](http://localhost:8000/docs)
 
 ### Running Frontend -
 
 > For this node and npm is required
 
-Open new terminal and run the following commands
+Open a new terminal and run the following commands.
 
 ```bash
 $ cd client
