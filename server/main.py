@@ -9,17 +9,23 @@ app = FastAPI(
     title="Food Ez"
 )
 
-origins = ['http://localhost:3000','localhost:3000']
+origins = ['http://localhost:3000', 'localhost:3000']
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=['*'],
-    allow_headers=['*']    
+    allow_headers=['*']
 )
 
 Base.metadata.create_all(engine)
+
+
+@app.get('/', tags=['Home'])
+def home():
+    return "FoodEz API - append /docs at the end of url to access documentation"
+
 
 app.include_router(authentication.router)
 app.include_router(dashboard.router)

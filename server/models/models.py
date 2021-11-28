@@ -16,6 +16,7 @@ class User(Base):
     is_superuser = Column(Boolean, default=False)
     orders = relationship('Orders', back_populates='user_name')
 
+
 class Product(Base):
     __tablename__ = "products"
     id = Column(Integer, primary_key=True)
@@ -25,6 +26,7 @@ class Product(Base):
     qty = Column(Integer)
     is_veg = Column(Boolean)
     orders = relationship('Orders', back_populates='product_name')
+
 
 class Orders(Base):
     __tablename__ = "orders"

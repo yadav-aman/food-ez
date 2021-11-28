@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class Product(BaseModel):
     name: str
     description: str
@@ -7,7 +8,9 @@ class Product(BaseModel):
     is_veg: bool
     qty: int
 
+
 class Show_Products(Product):
     id: int
+
     class Config():
         orm_mode = True

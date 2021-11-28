@@ -11,16 +11,19 @@ router = APIRouter(
     tags=['Users']
 )
 
+
 @router.post('/')
-async def create_user(request: user.User,db: Session = Depends(get_db)):
-    old_user = db.query(models.User).filter(models.User.username == request.username).first()
+async def create_user(request: user.User, db: Session = Depends(get_db)):
+    old_user = db.query(models.User).filter(
+        models.User.username == request.username).first()
     if old_user:
-        raise HTTPException(status_code=status.HTTP_405_METHOD_NOT_ALLOWED, detail=f"User: {request.username} already exists")
+        raise HTTPException(status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
+                            detail=f"User: {request.username} already exists")
 
     new_user = models.User(
-        name = request.name,
-        username = request.username,
-        password = hashing.Hash.bcrypt(request.password)
+        name=request.name,
+        username=request.username,
+        password=hashing.Hash.bcrypt(request.password)
     )
     try:
         db.add(new_user)
@@ -35,21 +38,25 @@ async def create_user(request: user.User,db: Session = Depends(get_db)):
 async def show_me(current_user: user = Depends(oauth2.get_current_user)):
     return current_user
 
+
 @router.get('/all')
 async def show_all(db: Session = Depends(get_db), current_user: user = Depends(oauth2.get_current_superuser)):
     return db.query(models.User).all()
 
+
 @router.post('/admin')
-async def create_admin(request: user.User,db: Session = Depends(get_db)):
-    old_user = db.query(models.User).filter(models.User.username == request.username).first()
+async def create_admin(request: user.User, db: Session = Depends(get_db)):
+    old_user = db.query(models.User).filter(
+        models.User.username == request.username).first()
     if old_user:
-        raise HTTPException(status_code=status.HTTP_405_METHOD_NOT_ALLOWED, detail=f"User: {request.username} already exists")
+        raise HTTPException(status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
+                            detail=f"User: {request.username} already exists")
 
     new_user = models.User(
-        name = request.name,
-        username = request.username,
-        password = hashing.Hash.bcrypt(request.password),
-        is_superuser = True
+        name=request.name,
+        username=request.username,
+        password=hashing.Hash.bcrypt(request.password),
+        is_superuser=True
     )
     try:
         db.add(new_user)
