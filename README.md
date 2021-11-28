@@ -59,7 +59,7 @@
   $ python3 server/main.py
   ```
 
-- Now the server is hosted at localhost:8000, and the API documentation along with all the end points can be accessed at [localhost:8000/docs](http://localhost:8000/)
+- Now the server is hosted at localhost:8000, and the API documentation along with all the end points can be accessed at [localhost:8000/docs](http://localhost:8000/docs)
 
 ### Running Frontend -
 
