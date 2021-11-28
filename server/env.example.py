@@ -1,0 +1,2 @@
+# openssl rand -hex 32
+SECRET_KEY = "24fc0024fa7314a87e8591d6758b860932de20de65294ab89fb3836332bc9c73"

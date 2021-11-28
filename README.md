@@ -10,10 +10,11 @@
 
 ## Technologies Used
 
-- FastAPI (Python Framework)
-- SQL Database
-- React JS
-- Tailwind CSS
+- [FastAPI (Python Framework)](https://fastapi.tiangolo.com/)
+- [SQLite Database](https://www.sqlite.org/index.html)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
+- [React JS](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
 
 ---
 
@@ -34,20 +35,35 @@
 
 > For this python>= 3.8 is required
 
-Open terminal and run the following commands
+## Open terminal and run the following commands
 
-```bash
-$ cd server
-$ pip install -r requirements.txt
-$ cd ..
-$ python3 server/main.py
-```
+- ### Installing Dependencies
+  ```bash
+  $ cd server
+  $ pip install -r requirements.txt
+  $ cd ..
+  ```
+- ### Setting up environment secret key (for encryption)
+
+  ```
+  $ touch env.py
+  $ openssl rand -hex 32
+    24fc0024fa7314a87e8591d6758b860932de20de65294ab89fb3836332bc9c73
+  ```
+
+  > Copy the generated key inside env.py file, in the same format as given in env.example.py file
+
+- ### Starting the server
+
+  ```
+  $ python3 server/main.py
+  ```
 
 - Now the server is hosted at localhost:8000, and the API documentation along with all the end points can be accessed at [localhost:8000/docs](http://localhost:8000/)
 
 ### Running Frontend -
 
-> For this node and npm is required is required
+> For this node and npm is required
 
 Open new terminal and run the following commands
 
