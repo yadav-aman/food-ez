@@ -55,6 +55,7 @@
 - ### Starting the server
 
   ```
+  $ cd ..
   $ python3 server/main.py
   ```
 
