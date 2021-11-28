@@ -9,13 +9,12 @@ import {
   TableFooter,
   TableContainer,
   Badge,
-  Button,
 } from '@windmill/react-ui';
 
 const MyOrders = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-  const [token, setToken] = useContext(UserContext);
+  const [token] = useContext(UserContext);
 
   const reqMyOrders = async () => {
     const requestOptions = {

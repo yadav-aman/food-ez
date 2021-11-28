@@ -55,11 +55,6 @@ const Products = () => {
                           'object-cover object-center w-full block relative h-48 rounded overflow-hidden' +
                           (item.qty <= 0 ? 'opacity-30' : 'opacity-100')
                         }
-                        // src="https://dummyimage.com/420x260"
-                        // src="https://dummyimage.com/420x260"
-                        // src="`https://picsum.photos/200/300?random=${item.name}`"
-                        // src="https://picsum.photos/200/300"
-                        // src={`https://source.unsplash.com/200x200/?${item.name},{food}`}
                         src={`/images/${item.id}.jpg`}
                       />
                     )}

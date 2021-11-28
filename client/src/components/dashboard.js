@@ -8,7 +8,6 @@ import pendingIcon from '../dashboard/sidenavigation/icons/pending';
 import PageTitle from './PageTitle';
 import ChartCard from './ChartCard';
 import ChartLegend from './ChartLegend';
-// import Charts from './Charts';
 import { Bar, Line } from 'react-chartjs-2';
 import { lineOptions, lineLegends, barOptions, barLegends } from './ChartsData';
 import { useContext, useEffect, useState } from 'react';

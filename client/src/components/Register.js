@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-import AuthSvg from './authSvg';
 import ErrorMessage from './ErrorMessage';
 import { useHistory } from 'react-router-dom';
 
@@ -61,9 +60,7 @@ const Register = () => {
         <div className="md:flex w-full">
           <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
             {/* <AuthSvg /> */}
-            <img 
-              src="/images/Landing_Lady.png" alt="Landing"
-            />
+            <img src="/images/Landing_Lady.png" alt="Landing" />
           </div>
           <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
             <div className="text-center mb-10">

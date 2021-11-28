@@ -14,7 +14,7 @@ import {
 const Users = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-  const [token, setToken] = useContext(UserContext);
+  const [token] = useContext(UserContext);
 
   useEffect(() => {
     reqUsers();

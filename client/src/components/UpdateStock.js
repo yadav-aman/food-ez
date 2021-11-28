@@ -15,7 +15,7 @@ const UpdateStock = () => {
       },
     };
 
-    const response = await fetch(
+    await fetch(
       `http://localhost:8000/item/${productID}?qty=${quantity}`,
       requestOptions,
     );
