@@ -41,7 +41,6 @@
   ```bash
   $ cd server
   $ pip install -r requirements.txt
-  $ cd ..
   ```
 - ### Setting up environment secret key (for encryption)
 
